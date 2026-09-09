@@ -1,0 +1,14 @@
+parameters:
+    level: 5
+    # DTO arrays still need runtime validation despite their PHPDoc element types.
+    treatPhpDocTypesAsCertain: false
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        # Symfony's KernelTrait calls this hook from vendor code.
+        -
+            identifier: method.unused
+            message: '#^Method App\\Kernel::getAllowedEnvs\(\) is unused\.$#'
+            path: src/Kernel.php
+            count: 1
